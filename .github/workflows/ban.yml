@@ -1,0 +1,23 @@
+name: 🚀 48HR Instagram Ban Attack
+on:
+  workflow_dispatch:
+    inputs:
+      target:
+        description: 'Target (@username)'
+        required: true
+
+jobs:
+  banhammer:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - name: Setup Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+    - name: Install dependencies
+      run: pip install requests
+    - name: 🔥 FULL BAN ATTACK
+      env:
+        TARGET: ${{ github.event.inputs.target }}
+      run: python auto_ban.py
